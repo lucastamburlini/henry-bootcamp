@@ -5,6 +5,7 @@ function BinarioADecimal(num) {
 }
 
 function DecimalABinario(num) {
+   return num.toString(2);
 }
 
 module.exports = {
