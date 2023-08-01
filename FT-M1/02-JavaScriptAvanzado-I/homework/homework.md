@@ -116,6 +116,9 @@ test();
 ```
 
 Y el de este código? :
+// El problema está en que JavaScript utiliza el concepto de hoisting para las variables declaradas con var, lo que significa que la declaración de var snack dentro de la función se mueve al principio del ámbito de la función, pero la asignación snack = "Friskies" se mantiene en su lugar.
+
+Entonces, cuando se encuentra la expresión return snack; dentro del bloque if, JavaScript buscará la variable local snack dentro de la función, pero aún no se ha asignado un valor a esa variable en ese punto. Debido a esto, el valor que se devuelve es undefined. 
 
 ```javascript
 var snack = "Meow Mix";
@@ -147,11 +150,11 @@ var obj = {
   },
 };
 
-console.log(obj.prop.getFullname());
+console.log(obj.prop.getFullname()); // Aurelio De Rosa
 
-var test = obj.prop.getFullname;
+var test = obj.prop.getFullname; // undefaind
 
-console.log(test());
+console.log(test()); // undefaind
 ```
 
 ### Event loop
@@ -170,7 +173,7 @@ function printing() {
   console.log(4);
 }
 
-printing();
+printing(); // 1 - 4 - 3 - 2
 ```
 
 </br >
