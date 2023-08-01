@@ -13,7 +13,6 @@ function DecimalABinario(num) {
    let binario = [];
    while (num >= 1) {
       let res = Math.trunc(num % 2)
-      console.log(num);
       num = num / 2
       binario.unshift(res)
    }
