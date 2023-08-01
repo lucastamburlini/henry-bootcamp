@@ -10,7 +10,14 @@ function BinarioADecimal(num) {
 }
 
 function DecimalABinario(num) {
-   return num.toString(2);
+   let binario = [];
+   while (num >= 1) {
+      let res = Math.trunc(num % 2)
+      console.log(num);
+      num = num / 2
+      binario.unshift(res)
+   }
+   return binario.join("");
 }
 
 module.exports = {
