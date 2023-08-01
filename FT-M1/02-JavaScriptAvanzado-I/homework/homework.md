@@ -80,19 +80,19 @@ console.log(pm); // Franco
 6 / "3" // 2
 "2" * "3" // 6
 4 + 5 + "px" // 9px
-"$" + 4 + 5 // $9
+"$" + 4 + 5 // $45
 "4" - 2 // 2
-"4px" - 2 // 4px2
+"4px" - 2 // NaN
 7 / 0 // 0
-{}[0] //
-parseInt("09")
-5 && 2
-2 && 5
-5 || 0
-0 || 5
-[3]+[3]-[10]
-3>2>1
-[] == ![]
+{}[0] // undefiend
+parseInt("09") // 9
+5 && 2 // 2
+2 && 5 // 5
+5 || 0 // 5
+0 || 5 // 5
+[3]+[3]-[10] // 23
+3>2>1 // false
+[] == ![] // true
 ```
 
 > Si te quedó alguna duda repasá con [este artículo](http://javascript.info/tutorial/object-conversion).
@@ -103,8 +103,8 @@ parseInt("09")
 
 ```javascript
 function test() {
-  console.log(a);
-  console.log(foo());
+  console.log(a); // undefined
+  console.log(foo()); // 2
 
   var a = 1;
   function foo() {
@@ -128,7 +128,7 @@ function getFood(food) {
   return snack;
 }
 
-getFood(false);
+getFood(false); // undefined
 ```
 
 ### This
