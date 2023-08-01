@@ -44,19 +44,19 @@ var instructor = "Tony";
 if (true) {
   var instructor = "Franco";
 }
-console.log(instructor);
+console.log(instructor); // Franco
 ```
 
 ```javascript
 var instructor = "Tony";
-console.log(instructor);
+console.log(instructor); // Tony
 (function () {
   if (true) {
     var instructor = "Franco";
-    console.log(instructor);
+    console.log(instructor); // Franco
   }
 })();
-console.log(instructor);
+console.log(instructor); // Tony
 ```
 
 ```javascript
@@ -65,11 +65,11 @@ let pm = "Franco";
 if (true) {
   var instructor = "The Flash";
   let pm = "Reverse Flash";
-  console.log(instructor);
-  console.log(pm);
+  console.log(instructor); // The Flash
+  console.log(pm); // Reverse Flash
 }
-console.log(instructor);
-console.log(pm);
+console.log(instructor); // The Flash
+console.log(pm); // Franco
 ```
 
 ### Coerción de Datos
@@ -77,14 +77,14 @@ console.log(pm);
 ¿Cuál crees que será el resultado de la ejecución de estas operaciones?:
 
 ```javascript
-6 / "3"
-"2" * "3"
-4 + 5 + "px"
-"$" + 4 + 5
-"4" - 2
-"4px" - 2
-7 / 0
-{}[0]
+6 / "3" // 2
+"2" * "3" // 6
+4 + 5 + "px" // 9px
+"$" + 4 + 5 // $9
+"4" - 2 // 2
+"4px" - 2 // 4px2
+7 / 0 // 0
+{}[0] //
 parseInt("09")
 5 && 2
 2 && 5
