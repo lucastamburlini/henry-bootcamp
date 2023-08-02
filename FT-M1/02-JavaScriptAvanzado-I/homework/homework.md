@@ -101,6 +101,8 @@ parseInt("09") // 9
 
 ¿Cuál es el output o salida en consola luego de ejecutar este código? Explicar por qué:
 
+El comportamiento de hoisting hace que las declaraciones de la variable a y la función foo sean elevadas al principio de la función test, permitiendo que se acceda a ellas antes de su declaración real en el código. Sin embargo, esto no aplica a las asignaciones, por lo que aunque la declaración de a es elevada, su asignación a 1 ocurre en su posición original.
+
 ```javascript
 function test() {
   console.log(a); // undefined
@@ -116,7 +118,8 @@ test();
 ```
 
 Y el de este código? :
-// El problema está en que JavaScript utiliza el concepto de hoisting para las variables declaradas con var, lo que significa que la declaración de var snack dentro de la función se mueve al principio del ámbito de la función, pero la asignación snack = "Friskies" se mantiene en su lugar.
+
+El problema está en que JavaScript utiliza el concepto de hoisting para las variables declaradas con var, lo que significa que la declaración de var snack dentro de la función se mueve al principio del ámbito de la función, pero la asignación snack = "Friskies" se mantiene en su lugar.
 
 Entonces, cuando se encuentra la expresión return snack; dentro del bloque if, JavaScript buscará la variable local snack dentro de la función, pero aún no se ha asignado un valor a esa variable en ese punto. Debido a esto, el valor que se devuelve es undefined. 
 
@@ -137,6 +140,8 @@ getFood(false); // undefined
 ### This
 
 ¿Cuál es el output o salida en consola luego de ejecutar esté código? Explicar por qué:
+
+Se imprime "Aurelio De Rosa" debido a la llamada al método getFullname() dentro del objeto prop del objeto obj. Luego, se imprime "undefined" al invocar la función almacenada en la variable test(), ya que al hacerlo de esta manera se pierde el contexto y la referencia a this.fullname no está definida en ese contexto.
 
 ```javascript
 var fullname = "Juan Perez";
@@ -160,6 +165,8 @@ console.log(test()); // undefaind
 ### Event loop
 
 Considerando el siguiente código, ¿Cuál sería el orden en el que se muestra por consola? ¿Por qué?
+
+La razón de este orden es el comportamiento asíncrono de las funciones setTimeout() en JavaScript.
 
 ```javascript
 function printing() {
