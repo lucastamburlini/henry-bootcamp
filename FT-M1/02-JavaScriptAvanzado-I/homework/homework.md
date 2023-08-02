@@ -12,19 +12,20 @@ var a = 5;
 var b = 10;
 var c = function (a, b, c) {
   var x = 10;
-  console.log(x); // 10
-  console.log(a); // 8
+  console.log(x); // 10 - Da 10 por el contexto que se genera dentro de la función.
+  console.log(a); // 8 - Los hijos pueden buscar dentro de los padres.
   var f = function (a, b, c) {
-    b = a;
+    b = a; // 8 se le asigna a través de "valor por referencia".
     console.log(b); // 8
-    b = c;
+    b = c; // 10 se le asigna el valor de b = a y luego cambia a b = c por el orden de ejecución.
     var x = 5;
+    // Se puede cambiar el valor de "b" retornardo el valor "return = b;"
   };
-  f(a, b, c);
+  f(a, b, c); // 8, 9 , 10 se desprenden de los valores asignados en "c".
   console.log(b); // 9
 };
 c(8, 9, 10);
-console.log(b); // 9
+console.log(b); // 10
 console.log(x); // 1
 ```
 
