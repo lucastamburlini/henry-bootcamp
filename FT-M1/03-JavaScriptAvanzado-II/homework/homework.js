@@ -14,11 +14,15 @@ const otroContador = counter()
 otroContador()      // 1
 otroContador()      // 2 */
 function counter() {
-  let count = 1;
+  let count = 1; // Inicializarlo en 0 o 1 depende del momento en el que retornamos el count.
   return function () {
     return count++;
   }
+
+  // const count = counter();
+  // console.log(count());
 }
+
 
 /* Ejercici 2
 Tu tarea aquí es lograr, mediante un closure, que cacheFunction actúe como una memoria caché para el callback 
@@ -51,9 +55,11 @@ function cacheFunction(cb) {
     } else {
       // Si el resultado no está en caché, invocamos a la función 'cb' con el argumento 'arg' y almacenamos el resultado en 'cache' asociándolo con el nombre 'arg', y luego devolvemos el resultado recién calculado.
 
-      let result = cb(arg);
-      cache[arg] = result;
-      return result;
+      // let result = cb(arg);
+      // cache[arg] = result;
+      // return result;
+
+      return cache[arg] = cb(arg);
     }
   }
 }
@@ -94,9 +100,11 @@ function crearCadena(delimitadorIzquierda, delimitadorDerecha, cadena) {
   return delimitadorIzquierda + cadena + delimitadorDerecha;
 }
 
-let textoAsteriscos = crearCadena.bind(crearCadena, "*", "*");
-let textoGuiones = crearCadena.bind(crearCadena, "-", "-");
-let textoUnderscore = crearCadena.bind(crearCadena, "_", "_");
+let textoAsteriscos = crearCadena.bind(this, "*", "*");
+let textoGuiones = crearCadena.bind(this, "-", "-");
+let textoUnderscore = crearCadena.bind(this, "_", "_");
+
+// Funciona con null es porque no hace ninguna referencia directa
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
