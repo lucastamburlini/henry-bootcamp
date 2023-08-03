@@ -62,6 +62,9 @@ function cacheFunction(cb) {
       return cache[arg] = cb(arg);
     }
   }
+
+  // Con ternario:
+  // return cache.hasOwnProperty(arg) ? cache[arg] : (cache[arg] = cb(arg));
 }
 
 //----------------------------------------
@@ -105,6 +108,8 @@ let textoGuiones = crearCadena.bind(this, "-", "-");
 let textoUnderscore = crearCadena.bind(this, "_", "_");
 
 // Funciona con null es porque no hace ninguna referencia directa
+
+
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
