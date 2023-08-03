@@ -54,7 +54,7 @@ function cacheFunction(cb) {
 
       let result = cb(arg);
       cache[arg] = result;
-      return result; // 
+      return result;
     }
   }
 }
