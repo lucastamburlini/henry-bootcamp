@@ -69,6 +69,8 @@ const fibonacci = n => {
   
 } */
 
+//----------------------------------------------------------------
+
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
   - enqueue: agrega un valor respetando el orden.
@@ -77,6 +79,7 @@ Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde e
 
 Pueden utilizar class o función constructora.
 */
+
 
 
 class Queue {
@@ -95,7 +98,19 @@ class Queue {
     }
     return this.fila.shift(element);
   }
-}
+} 
+
+
+/* Para pasar info al Queue 
+let miQueue = new Queue();
+miQueue(2);
+miQueue(3);
+miQueue(25);
+console.log(miQueue)
+console.log(miQueue.size)
+*/
+
+//----------------------------------------------------------------
 /*
 function Queue() {
   this.fila = [];
@@ -113,6 +128,8 @@ Queue.prototype.size = function() {
   return this.fila.length;
 };
 */
+//----------------------------------------------------------------
+
 
 
 
