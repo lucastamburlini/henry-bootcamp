@@ -29,15 +29,30 @@ function nFactorial(n) {
 
 function nFibonacci(n) {
 
-  if (n === 0) {
-    return 0
-  }
-  if (n === 1) {
-    return 1
-  }
-  return nFibonacci(n - 1) + nFibonacci(n - 2)
+  if (n < 2) return n
+  return nFibonacci(n - 2) + nFibonacci(n - 1)
+
+
+  /*   if (n === 0) {
+      return 0
+    }
+    if (n === 1) {
+      return 1
+    }
+    return nFibonacci(n - 1) + nFibonacci(n - 2) */
 
 }
+
+/*  SIN RECURSIVIDAD
+
+const fibonacci = n => {
+  const fib = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    fib[i] = fib[i - 2] + fib{ i - 1 }
+  }
+  return fib[n]
+  
+} */
 
 /*
 Implementar la clase Queue, sabiendo que es una estructura de tipo FIFO, donde el primer elemento que ingresa es el primero que se quita. Definir los siguientes métodos:
