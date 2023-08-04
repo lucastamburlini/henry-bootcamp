@@ -15,17 +15,34 @@ Como ejercicio adicional y completamente opcional, al terminar de resolver este 
 */
 
 function nFactorial(n) {
+
+
+  /* OPCIÓN ITARATIVA
+
+  let factorial = n // definimos n como el valor factorial.
+
+  while(n>=1){
+    n-- // reducimos su valor en 1
+    factorial *= n // multiplicamos el nro facotrial por n - 1 
+  }
+  return factorial 
+  */
+
+
   // El factorial de un número entero positivo es el producto de todos los enteros positivos desde 1 hasta él. ( "!"" = signo factorial. )
   // Ejemplo:  es la multiplicación de todos todos los números enteros hasta él.
   // 5! = 5*4*3*2*1 = 120
   // Es el número que me permite saber cuántas combinación diferentes se pueden haber en un grupo de elementos cambiándolos de orden.
   // Por definición 0! es 1.
-  if (n === 0) {
+
+  if (n === 0 || n === 0) {
     return 1;
   }
   return n * nFactorial(n - 1)
-
+  
 }
+
+//-----------------------------------------------------------------------------
 
 function nFibonacci(n) {
 
