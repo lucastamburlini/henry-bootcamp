@@ -151,18 +151,14 @@ HashTable.prototype.get = function (key) {
   return "No hay datos"
 }
 
-HashTable.prototype.hasKey = function () {
-//  recibe una clave por parámetro y consulta si ya hay algo almacenado en la tabla con esa clave (retorna un booleano).
+HashTable.prototype.hasKey = function (key) {
+  //  recibe una clave por parámetro y consulta si ya hay algo almacenado en la tabla con esa clave (retorna un booleano).
+  let index = this.hash(key);
+  if (this.buckets[index][key]) {
+    return true
+  } return false
 }
 
-
-
-let tabla = new HashTable
-
-tabla.set("Lucas", "lucas@gmail.com")
-console.log(tabla)
-let result = tabla.get("Lucas")
-console.log(result)
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
