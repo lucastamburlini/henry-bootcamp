@@ -121,31 +121,48 @@ class HashTable {
     this.numBuckets = 35;
     this.buckets = new Array(this.numBuckets);
   }
-
-  hash(key) {
-    let hashValue = 0;
-
-    for (let i = 0; i < KeyboardEvent.length; i++) {
-      const charCode = key.charCodeAt(i)
-      hashValue += charCode;
-    }
-
-    const index = hashValue % this.size
-    return index
-  }
-
-  set() {
-
-  }
-
-  get() {
-
-  }
-
-  hasKey() {
-
-  }
 }
+
+HashTable.prototype.hash = function (key) {
+
+  let hashValue = 0;
+
+  for (let i = 0; i < key.length; i++) {
+    hashValue += key.charCodeAt(i)
+    console.log(key.charCodeAt(i))
+  }
+  console.log(hashValue % this.numBuckets)
+  return hashValue % this.numBuckets
+}
+
+HashTable.prototype.set = function (key, value) {
+  let index = this.hash(key);
+  if (typeof key !== "string") throw TypeError("Debe ser un string");
+  if (this.buckets[index] === undefined) {
+    this.buckets[index] = {};
+  }
+  this.buckets[index][key] = value
+}
+
+HashTable.prototype.get = function (key) {
+  // recibe una clave por parámetro, y busca el valor que le corresponde en el bucket correcto de la tabla.
+  let index = this.hash(key)
+  if (this.buckets[index][key]) return this.buckets[index][key]
+  return "No hay datos"
+}
+
+HashTable.prototype.hasKey = function () {
+//  recibe una clave por parámetro y consulta si ya hay algo almacenado en la tabla con esa clave (retorna un booleano).
+}
+
+
+
+let tabla = new HashTable
+
+tabla.set("Lucas", "lucas@gmail.com")
+console.log(tabla)
+let result = tabla.get("Lucas")
+console.log(result)
 
 // No modifiquen nada debajo de esta linea
 // --------------------------------
