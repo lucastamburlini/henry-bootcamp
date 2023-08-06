@@ -129,6 +129,9 @@ class HashTable {
       const charCode = key.charCodeAt(i)
       hashValue += charCode;
     }
+
+    const index = hashValue % this.size
+    return index
   }
 
   set() {
