@@ -122,8 +122,13 @@ class HashTable {
     this.buckets = new Array(this.numBuckets);
   }
 
-  hash() {
+  hash(key) {
+    let hashValue = 0;
 
+    for (let i = 0; i < KeyboardEvent.length; i++) {
+      const charCode = key.charCodeAt(i)
+      hashValue += charCode;
+    }
   }
 
   set() {
