@@ -20,21 +20,23 @@ function Node(value) {
   this.next = null
 }
 
+// 
+
 LinkedList.prototype.add = function (value) {
   // Se crea un nuevo node utilizando el constructor Node y se le pasa el valor value.
-  let node = new Node(value)
+  let newNode = new Node(value)
   // Se establece una variable current para rastrear el node actual mientras se recorre la lista.
   let current = this.head
   // Si la lista está vacía (no hay current), el nuevo node se convierte en el primer node de la lista estableciendo this.head en el nuevo node.
   if (!current) {
-    this.head = node
+    this.head = newNode
     // Si la lista no está vacía, se recorre la lista hasta llegar al último node utilizando el bucle while(current.next).
   } else {
     // Una vez se llega al último node, se establece la referencia next del último node al nuevo node creado.
     while (current.next) {
       current = current.next
     }
-    current.next = node
+    current.next = newNode
   }
   // Finalmente, se incrementa _length para reflejar que un nuevo node ha sido añadido a la lista.
   this._length++
@@ -50,10 +52,10 @@ LinkedList.prototype.remove = function () {
 
   // Si hay un sólo nodo en la lista
   if (!current.next) {
-    let removeValue = current.value; // Guardar el valor del nodo a eliminar
+    let aux = current.value; // Guardar el valor del nodo a eliminar
     this.head = null; // Establecer el head como null para indicar lista vacía
     this._length--; // Reducir la longitud de la lista
-    return removeValue; // Devolver el valor del nodo eliminado
+    return aux; // Devolver el valor del nodo eliminado
   }
 
   // Con el while recorre la lista hasta el penúltimo nodo y lo asigna
@@ -61,17 +63,18 @@ LinkedList.prototype.remove = function () {
     current = current.next
   };
 
-  let removeValue = current.next.value;// Guardar el valor del último nodo a eliminar
+  let aux = current.next.value;// Guardar el valor del último nodo a eliminar
   current.next = null // Eliminar la referencia al último nodo
   this._length--; // Reducir la longitud de la lista
-  return removeValue // Devolver el valor del nodo eliminado
+  return aux // Devolver el valor del nodo eliminado 
+
 
 }
 
 LinkedList.prototype.search = function (value, cb) {
   let current = this.head
 
-  while (current) {
+  /* while (current) {
 
     if (cb && typeof cb === 'function') {
       if (cb(current.value)) {
@@ -91,11 +94,23 @@ LinkedList.prototype.search = function (value, cb) {
       }
     }
 
+    current = current.next
+  }
+  return null */
 
 
+  while (current) {
+    if (current.value === value) return current.value
+    if (typeof value === "function") {
+      if (value(current.value)) {
+        return current.value
+      }
+    }
     current = current.next
   }
   return null
+
+
 };
 
 
