@@ -190,8 +190,8 @@ let print = function (x) {
 
 BinarySearchTree.prototype.breadthFirstForEach = function (cb, depth = []) {
 
-   // Cada vez que se ejecute la recursión el "almacen" se vacía, por eso se agrega como un valor por default (param).
-   
+   // Cada vez que se ejecute la recursión el "almacen(depth)" se vacía, por eso se agrega como un valor por default (param).
+
    cb(this.value) // primero ejecutamos el root para luego poder ejecutar los hijos.
 
    if (this.left !== null) {
