@@ -138,14 +138,10 @@ function HashTable() {
 }
 
 HashTable.prototype.hash = function (key) {
-
   let hashValue = 0;
-
   for (let i = 0; i < key.length; i++) {
     hashValue += key.charCodeAt(i)
-    console.log(key.charCodeAt(i))
   }
-  console.log(hashValue % this.numBuckets)
   return hashValue % this.numBuckets
 }
 
@@ -168,9 +164,12 @@ HashTable.prototype.get = function (key) {
 HashTable.prototype.hasKey = function (key) {
   //  recibe una clave por parámetro y consulta si ya hay algo almacenado en la tabla con esa clave (retorna un booleano).
   let index = this.hash(key);
-  if (this.buckets[index][key]) {
-    return true
-  } return false
+
+  /*   if (this.buckets[index][key]) {
+      return true
+    } return false */
+
+  return this.buckets[index].hasOwnProperty(key)
 }
 
 
