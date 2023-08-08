@@ -11,25 +11,47 @@
 */
 function BinarySearchTree(value) {
    this.value = value;
-   this.left = null;
-   this.right = null;
+   this.left = null; // valores menos a la izquierda
+   this.right = null; // valores mayores a la derecha
 }
 
 BinarySearchTree.prototype.insert = function (value) {
-   let subTree = new BinarySearchTree(value);
+   /*    let subTree = new BinarySearchTree(value);
+      if (value < this.value) {
+         if (this.left === null) {
+            this.left = subTree
+         } else {
+            this.left.insert(value)
+         }
+      } else if (value >= this.value) {
+         if (this.right === null) {
+            this.right = subTree
+         } else {
+            this.right.insert(value)
+         }
+      } */
+
+   // Valores a la izquierda
+
    if (value < this.value) {
       if (this.left === null) {
-         this.left = subTree
+         this.left = new BinarySearchTree(value) // se crea una nueva instancia.
       } else {
          this.left.insert(value)
       }
-   } else if (value >= this.value) {
+   }
+
+   // Valores a la derecha
+
+   if (value > this.value) {
       if (this.right === null) {
-         this.right = subTree
+         this.right = new BinarySearchTree(value)
       } else {
-         this.right.insert(value)
+         this.right.insert()
       }
    }
+
+
 };
 
 let tree = new BinarySearchTree(20);
