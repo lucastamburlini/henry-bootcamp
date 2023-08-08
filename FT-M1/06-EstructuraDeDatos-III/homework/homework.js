@@ -110,6 +110,27 @@ BinarySearchTree.prototype.contains = function (value) {
       return false;
    }
 
+   //-----------------------------------------------
+   /*
+   if (this.value === value) return true
+   if (value < this.value) {
+      if (this.left === null) {
+         return false
+      } else {
+         return this.left.contains()
+      }
+   }
+
+   if (value > this.value) {
+      if (this.right === null) {
+         return false
+      } else {
+         return this.right.contains()
+      }
+   } 
+   */
+
+
 };
 
 /* BinarySearchTree.prototype.contains = function (value) {
@@ -157,6 +178,8 @@ BinarySearchTree.prototype.depthFirstForEach = function (cb, order) {
    }
 };
 
+
+// Vamos a enviar una función print() para que nos muestre los nodos.
 BinarySearchTree.prototype.breadthFirstForEach = function (cb, depth = []) {
    cb(this.value) // primero ejecutamos el root para luego poder ejecutar los hijos.
 
