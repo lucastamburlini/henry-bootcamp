@@ -67,8 +67,8 @@ function bubbleSort(array) {
 
 
 }
-let result2 = bubbleSort([7, 8, 5, 2, 11])
-console.log(result2)
+let result1 = bubbleSort([7, 8, 5, 2, 11])
+console.log(result1)
 
 
 function insertionSort(array) {
@@ -86,23 +86,24 @@ function insertionSort(array) {
   // Si es menor lo invierto (ojo, utilizar para no perder el valor)
 
   //1 while
-  let swapped = true;
-  while (swapped) {
-    swapped = false;
-    for (let i = 0; i < array.length - 1; i++) {
-      let segundo = array[i + 1];
-      if (array[i] > segundo) {
-        let aux = array[i];
-        array[i] = segundo;
-        array[i + 1] = aux
-        swapped = true
+  let swapped = true; // Inicializamos swapped en true para entrar al bucle while
+  while (swapped) {   // Inicia un bucle while que se ejecuta mientras swapped sea true
+    swapped = false;  // Inicializa swapped en false al inicio del bucle
+
+    for (let i = 0; i < array.length; i++) { // Inicia un bucle for que recorre el arreglo
+      let segundo = array[i + 1]; // Almacena el elemento siguiente al actual en segundo
+      if (array[i] > segundo) {   // Si el elemento actual es mayor que el siguiente
+        let aux = array[i];       // Guarda el valor del elemento actual en aux
+        array[i] = segundo;       // Reemplaza el valor del elemento actual con el siguiente
+        array[i + 1] = aux;       // Reemplaza el valor del elemento siguiente con el auxiliar
+        swapped = true;           // Indica que se realizó un intercambio
       }
     }
   }
-  return array
+  return array; // Devuelve el arreglo ordenado
 }
-let result = insertionSort([7, 8, 5, 2, 11])
-console.log(result)
+let result2 = insertionSort([7, 8, 5, 2, 11])
+console.log(result2)
 
 function selectionSort(array) {
   // Implementar el método conocido como selectionSort para ordenar de menor a mayor
@@ -120,9 +121,24 @@ function selectionSort(array) {
   //recorre ambos marcadores
   // i++
 
-  // 2 for
+  for (let i = 0; i < array.length; i++) {
+    let min = i; // Suponemos que el elemento actual es el mínimo
+    // Encontrar el índice del elemento mínimo en el subarreglo no ordenado
+    for (let j = i + 1; j < array.length; j++) {
+      if (array[j] < array[min])// Comparamos con el elemento en min
+        min = j;
+    }
+    // Intercambiar el elemento actual con el elemento mínimo
+    if (min !== i) {
+      let temp = array[i]
+      array[i] = array[min]
+      array[min] = temp
+    }
+  }
+  return array
 }
-
+let result3 = selectionSort([7, 8, 5, 2, 11])
+console.log(result3)
 
 // No modificar nada debajo de esta línea
 // --------------------------------
