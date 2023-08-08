@@ -16,6 +16,7 @@ function BinarySearchTree(value) {
 }
 
 BinarySearchTree.prototype.insert = function (value) {
+   //-----------------------------------------------
    /*    let subTree = new BinarySearchTree(value);
       if (value < this.value) {
          if (this.left === null) {
@@ -30,7 +31,7 @@ BinarySearchTree.prototype.insert = function (value) {
             this.right.insert(value)
          }
       } */
-
+   //-----------------------------------------------
    // Valores a la izquierda
 
    if (value < this.value) {
@@ -65,23 +66,34 @@ console.log(tree);
 
 BinarySearchTree.prototype.size = function () {
 
-   let size = 1;
+   //-----------------------------------------------
 
-   if (!this.value) {
-      return 0
-   }
-
-   if (this.left) {
-      size += this.left.size();
-   }
-
-   if (this.right) {
-      size += this.right.size();
-   }
-
-   return size;
-
+   /*  let size = 1;
+ 
+    if (!this.value) {
+       return 0
+    }
+ 
+    if (this.left) {
+       size += this.left.size();
+    }
+ 
+    if (this.right) {
+       size += this.right.size();
+    }
+ 
+    return size; */
+   //-----------------------------------------------
    /*  return 1 + (this.left ? this.left.size() : 0) + (this.right ? this.right.size() : 0) */
+   //-----------------------------------------------
+
+   // CASO A - AMBAS RAMAS TIENEN ELEMENTOS
+   if (this.left && this.right) return 1 + this.left.size() + this.right();
+   // CASO B - UNA SOLA RAMA TIENE ELEMENTOS
+   if (this.left && !this.right) return 1 + this.left.size();
+   if (!this.left && this.right) return 1 + this.right.size();
+   // AMBAS RAMAS VACÍAS
+   if (!this.left && !this.right) return 1;
 
 };
 console.log(tree.size());
