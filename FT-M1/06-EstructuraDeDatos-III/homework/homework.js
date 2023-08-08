@@ -150,27 +150,32 @@ BinarySearchTree.prototype.contains = function (value) {
       }
    }
 };
- */
+*/
 let result = tree.contains()
 console.log(result);
 
+
+
+// Vamos a enviar una función print() para que nos muestre los nodos.
 BinarySearchTree.prototype.depthFirstForEach = function (cb, order) {
 
    switch (order) {
 
-      case "pre-order":
+      case "pre-order": // NODO ⇒ IZQUIERDA ⇒ DERECHA
          cb(this.value)
          this.left && this.left.depthFirstForEach(cb, order)
          this.right && this.right.depthFirstForEach(cb, order)
          break
 
-      case "post-order":
+      // treu && fn() // if(true){fn()} // corto circuito
+
+      case "post-order": // IZQUIERDA ⇒ DERECHA ⇒ NODO
          this.left && this.left.depthFirstForEach(cb, order)
          this.right && this.right.depthFirstForEach(cb, order)
          cb(this.value)
          break
 
-      default:
+      default: // IZQUIERDA ⇒ NODO ⇒ DERECHA
          if (this.left !== null) this.left.depthFirstForEach(cb, order)
          cb(this.value)
          if (this.right !== null) this.right.depthFirstForEach(cb, order)
@@ -179,7 +184,9 @@ BinarySearchTree.prototype.depthFirstForEach = function (cb, order) {
 };
 
 
-// Vamos a enviar una función print() para que nos muestre los nodos.
+
+
+
 BinarySearchTree.prototype.breadthFirstForEach = function (cb, depth = []) {
    cb(this.value) // primero ejecutamos el root para luego poder ejecutar los hijos.
 
