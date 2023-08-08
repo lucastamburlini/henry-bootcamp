@@ -91,11 +91,15 @@ function insertionSort(array) {
     swapped = false;
     for (let i = 0; i < array.length - 1; i++) {
       let segundo = array[i + 1];
-      if (array[i] < segundo) {
+      if (array[i] > segundo) {
         let aux = array[i];
+        array[i] = segundo;
+        array[i + 1] = aux
+        swapped = true
       }
     }
   }
+  return array
 }
 let result = insertionSort([7, 8, 5, 2, 11])
 console.log(result)
