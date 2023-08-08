@@ -183,9 +183,10 @@ BinarySearchTree.prototype.depthFirstForEach = function (cb, order) {
    }
 };
 
-
-
-
+// Función cb
+let print = function (x) {
+   console.log(x)
+}
 
 BinarySearchTree.prototype.breadthFirstForEach = function (cb, depth = []) {
    cb(this.value) // primero ejecutamos el root para luego poder ejecutar los hijos.
