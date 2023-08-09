@@ -35,8 +35,8 @@ function nFactorial(n) {
   // Es el número que me permite saber cuántas combinación diferentes se pueden haber en un grupo de elementos cambiándolos de orden.
   // Por definición 0! es 1.
 
-  if (n === 0 || n === 0) return 1;
-  return n * nFactorial(n--)
+  if (n === 0 || n === 1) return 1;
+  return n * nFactorial(n - 1);
 
 }
 
