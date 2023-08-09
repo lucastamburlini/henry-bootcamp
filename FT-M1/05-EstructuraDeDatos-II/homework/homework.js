@@ -23,12 +23,10 @@ function Node(value) {
 // 
 
 LinkedList.prototype.add = function (value) {
-  // Se crea un nuevo node utilizando el constructor Node y se le pasa el valor value.
-  let newNode = new Node(value)
-  // Se establece una variable current para rastrear el node actual mientras se recorre la lista.
-  let current = this.head
-  // Si la lista está vacía (no hay current), el nuevo node se convierte en el primer node de la lista estableciendo this.head en el nuevo node.
-  if (!current) {
+
+  let newNode = new Node(value) // Se crea un nuevo node utilizando el constructor Node y se le pasa el valor value.
+  let current = this.head // Se establece una variable current para rastrear el node actual mientras se recorre la lista.
+  if (!current) {  // Si la lista está vacía (no hay current), el nuevo node se convierte en el primer node de la lista estableciendo this.head en el nuevo node.
     this.head = newNode
     // Si la lista no está vacía, se recorre la lista hasta llegar al último node utilizando el bucle while(current.next).
   } else {
@@ -38,8 +36,7 @@ LinkedList.prototype.add = function (value) {
     }
     current.next = newNode
   }
-  // Finalmente, se incrementa _length para reflejar que un nuevo node ha sido añadido a la lista.
-  this._length++
+  this._length++ // Finalmente, se incrementa _length para reflejar que un nuevo node ha sido añadido a la lista.
 }
 
 LinkedList.prototype.remove = function () {
@@ -67,8 +64,6 @@ LinkedList.prototype.remove = function () {
   current.next = null // Eliminar la referencia al último nodo
   this._length--; // Reducir la longitud de la lista
   return aux // Devolver el valor del nodo eliminado 
-
-
 }
 
 LinkedList.prototype.search = function (value, cb) {
