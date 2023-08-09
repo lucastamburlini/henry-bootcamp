@@ -9,10 +9,19 @@ function factorear(num) {
 
   let factores = [1];
   let divisor = 2;
-  for (let i = 1; num > 1; i++) {
+  /*   for (let i = 1; num > 1; i++) {
+      if (num % divisor === 0) {
+        factores.push(divisor)
+        num = num / divisor
+      } else {
+        divisor++
+      }
+    }
+    return factores */
+  while (num !== 1) {
     if (num % divisor === 0) {
       factores.push(divisor)
-      num = num / divisor
+      num /= divisor
     } else {
       divisor++
     }
@@ -50,22 +59,37 @@ function bubbleSort(array) {
     return array
   */
 
-  let swapped = false;
-  while (!swapped) {
-    swapped = true;
+  /*   let swapped = false;
+    while (!swapped) {
+      swapped = true;
+      for (let i = 0; i < array.length - 1; i++) {
+        if (array[i] > array[i + 1]) {
+          let temp = array[i];
+          array[i] = array[i + 1];
+          array[i + 1] = temp;
+          swapped = false;
+        }
+      }
+    }
+    return array; */
+
+
+
+
+  let cambio = true;
+  while (cambio) {
+    cambio = false
     for (let i = 0; i < array.length - 1; i++) {
       if (array[i] > array[i + 1]) {
-        let temp = array[i];
-        array[i] = array[i + 1];
-        array[i + 1] = temp;
-        swapped = false;
+        let aux = array[i]
+        array[i] = array[i + 1]
+        array[i + 1] = aux
+        cambio = true
+        // [array[i], arra[i+1] = array[i+1], array[i]] 
       }
     }
   }
-  return array;
-
-
-
+  return array
 }
 let result1 = bubbleSort([87, 7, 8, 5, 2, 11])
 console.log(result1)
@@ -85,22 +109,34 @@ function insertionSort(array) {
   // comparar el anterior i
   // Si es menor lo invierto (ojo, utilizar para no perder el valor)
 
-  //1 while
-  let swapped = true; // Inicializamos swapped en true para entrar al bucle while
-  while (swapped) {   // Inicia un bucle while que se ejecuta mientras swapped sea true
-    swapped = false;  // Inicializa swapped en false al inicio del bucle
-
-    for (let i = 0; i < array.length; i++) { // Inicia un bucle for que recorre el arreglo
-      let segundo = array[i + 1]; // Almacena el elemento siguiente al actual en segundo
-      if (array[i] > segundo) {   // Si el elemento actual es mayor que el siguiente
-        let aux = array[i];       // Guarda el valor del elemento actual en aux
-        array[i] = segundo;       // Reemplaza el valor del elemento actual con el siguiente
-        array[i + 1] = aux;       // Reemplaza el valor del elemento siguiente con el auxiliar
-        swapped = true;           // Indica que se realizó un intercambio
+  /*   //1 while
+    let swapped = true; // Inicializamos swapped en true para entrar al bucle while
+    while (swapped) {   // Inicia un bucle while que se ejecuta mientras swapped sea true
+      swapped = false;  // Inicializa swapped en false al inicio del bucle
+  
+      for (let i = 0; i < array.length; i++) { // Inicia un bucle for que recorre el arreglo
+        let segundo = array[i + 1]; // Almacena el elemento siguiente al actual en segundo
+        if (array[i] > segundo) {   // Si el elemento actual es mayor que el siguiente
+          let aux = array[i];       // Guarda el valor del elemento actual en aux
+          array[i] = segundo;       // Reemplaza el valor del elemento actual con el siguiente
+          array[i + 1] = aux;       // Reemplaza el valor del elemento siguiente con el auxiliar
+          swapped = true;           // Indica que se realizó un intercambio
+        }
       }
     }
+    return array; // Devuelve el arreglo ordenado */
+
+  for (let i = 1; i < array.length; i++) { // vamos a recorrer mientras que el valor de j sea menor que el valor de aux (valor que estamos comparando) o cuando j sale del arreglo
+    let aux = array[i];
+    let j = i - 1
+    while (j >= 0 && aux < array[j]) {
+      array[j + 1] = array[j]
+      j--
+    }
+    array[j + 1] = aux
   }
-  return array; // Devuelve el arreglo ordenado
+
+
 }
 let result2 = insertionSort([87, 7, 8, 5, 2, 11])
 console.log(result2)
