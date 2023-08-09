@@ -40,7 +40,6 @@ console.log(result);
 
 
 
-let array = [7, 2, 8, 5, 3, 9, 4];
 
 function mergeSort(array) {
   // Implementar el método conocido como mergeSort para ordenar de menor a mayor
@@ -56,23 +55,22 @@ function mergeSort(array) {
   // if([1]) = return array
   // dividir([])
   // izq[] | der[]
-  // merge(margeSort(izq[]) + margeSort.(der[])) solo vamos a unir los array que tiene un solo elemento
+  // merge(margeSort(izq[]) + margeSort.(der[])) El algoritmo merge sort divide el array en subarrays de tamaño 1 y luego los fusiona en orden.
 
   if (array.length <= 1) return array
+  console.log("array dividido:", array);
 
   let div = dividir(array)
   let izq = div[0]
+  console.log(izq);
   let der = div[1]
-
+  console.log(der);
 
   return merge(mergeSort(izq), mergeSort(der))
 }
 
 
 function dividir(array) {
-  // dividi a la mitad
-  // devuelve la izquierda
-  // devuelve la derecha
 
   let mitad = Math.floor(array.length / 2)
   console.log(array[mitad]);
@@ -95,17 +93,21 @@ function merge(izq, der) {
   while (indexIzq < izq.length && indexDer < der.length) {
     if (izq[indexIzq] < der[indexDer]) {
       arr.push(izq[indexIzq])
-      console.log(iIza);
       indexIzq++
     } else {
       arr.push(der[indexDer])
       indexDer++
-      console.log(indexDer);
     }
   }
+  console.log(arr);
   return arr.concat(izq.slice(indexIzq)).concat(der.slice(indexDer));
 }
 
+
+let array = [7, 2, 8, 5, 3, 9, 4];
+console.log("Array original:", array);
+const newArray = mergeSort(array);
+console.log("Array ordenado:", newArray);
 
 
 // No modificar nada debajo de esta línea
