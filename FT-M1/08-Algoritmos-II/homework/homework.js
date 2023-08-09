@@ -34,6 +34,7 @@ function quickSort(array) {
   console.log(arrDer);
 
   return arr.concat(quickSort(arrIzq), pivot, quickSort(arrDer))
+  /*return [...quickSort(arrIzq), pivote, ...quickSort(arrDer)]*/
 }
 let result = quickSort([7, 2, 8, 5, 3, 9, 4])
 console.log(result);
