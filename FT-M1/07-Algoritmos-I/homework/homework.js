@@ -136,7 +136,7 @@ function insertionSort(array) {
     array[j + 1] = aux
   }
 
-
+  return array
 }
 let result2 = insertionSort([87, 7, 8, 5, 2, 11])
 console.log(result2)
@@ -157,25 +157,41 @@ function selectionSort(array) {
   //recorre ambos marcadores
   // i++
 
-  for (let i = 0; i < array.length; i++) {
-    let min = i; // Suponemos que el elemento actual es el mínimo
+  /*   for (let i = 0; i < array.length; i++) {
+      let min = i; // Suponemos que el elemento actual es el mínimo
+  
+      // Encontrar el índice del elemento mínimo en el subarreglo no ordenado
+      for (let j = i + 1; j < array.length; j++) {
+        if (array[j] < array[min]) { // Comparamos el elemento en la posición j con el mínimo
+          min = j; // Actualizamos el índice del mínimo si encontramos un valor más pequeño
+        }
+      }
+  
+      // Intercambiar el elemento actual con el elemento mínimo (si es necesario)
+      if (min !== i) { // Si el índice del mínimo es diferente del índice actual
+        let temp = array[i];  // Almacenamos temporalmente el valor del elemento actual
+        array[i] = array[min]; // Sobrescribimos el valor del elemento actual con el mínimo encontrado
+        array[min] = temp;     // Asignamos el valor del elemento actual al lugar del mínimo
+      }
+    }
+  
+    return array; // Devolvemos el array ordenado */
 
-    // Encontrar el índice del elemento mínimo en el subarreglo no ordenado
+  for (let i = 0; i < array.length; i++) {
+    let min = i
     for (let j = i + 1; j < array.length; j++) {
-      if (array[j] < array[min]) { // Comparamos el elemento en la posición j con el mínimo
-        min = j; // Actualizamos el índice del mínimo si encontramos un valor más pequeño
+      if (array[j] < array[min]) {
+        min = j
       }
     }
 
-    // Intercambiar el elemento actual con el elemento mínimo (si es necesario)
-    if (min !== i) { // Si el índice del mínimo es diferente del índice actual
-      let temp = array[i];  // Almacenamos temporalmente el valor del elemento actual
-      array[i] = array[min]; // Sobrescribimos el valor del elemento actual con el mínimo encontrado
-      array[min] = temp;     // Asignamos el valor del elemento actual al lugar del mínimo
+    if (i !== min) {
+      let aux = array[i]
+      array[i] = array[min]
+      array[min] = aux
     }
   }
-
-  return array; // Devolvemos el array ordenado
+  return array
 }
 let result3 = selectionSort([90, 7, 8, 5, 2, 11])
 console.log(result3)
