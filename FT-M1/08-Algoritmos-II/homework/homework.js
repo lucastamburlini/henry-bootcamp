@@ -79,7 +79,7 @@ function mergeSort(array) {
   // merge(margeSort(izq[]) + margeSort.(der[])) El algoritmo merge sort divide el array en subarrays de tamaño 1 y luego los fusiona en orden.
 
   if (array.length <= 1) return array
-  console.log("array dividido:", array);
+
 
   let div = dividir(array)
   let izq = div[0]
@@ -148,7 +148,7 @@ function merge(izq, der) {
 }
 
 
-let array = [7, 2, 8, 5, 3, 9, 4, 14, 8, 9];
+let array = [7, 2,3,20];
 console.log("Array original:", array);
 const newArray = mergeSort(array);
 console.log("Array ordenado:", newArray);
