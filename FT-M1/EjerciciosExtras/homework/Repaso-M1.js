@@ -131,6 +131,19 @@ var closureMult = function (multiplier) {
 // que debe retornar la suma total de los valores dentro de cada nodo del arbol
 BinarySearchTree.prototype.sum = function () {
     // Tu código aca:
+    let suma = 0;
+
+    if (this.value) {
+        suma += this.value
+        if (this.left !== null) {
+            suma += this.left.sum()
+        }
+        if (this.right !== null) {
+            suma += this.right.sum()
+        }
+    }
+
+    return suma
 
 }
 
