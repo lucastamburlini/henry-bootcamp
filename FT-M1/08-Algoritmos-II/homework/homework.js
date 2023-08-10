@@ -122,6 +122,29 @@ function merge(izq, der) {
   }
   console.log(arr);
   return arr.concat(izq.slice(indexIzq)).concat(der.slice(indexDer));
+
+  /* op b
+  let unidos = [];
+  while (izq.length && der.length){
+    if(izq[0]< der[0]) {
+      unidos.push(izq.shift())
+    } else {
+      unidos.push(der.shift())
+    }
+  }
+
+  return izq.concat(unidos).concat(der)
+
+  oooo
+
+  while (izq.length){
+    unidos.push(izq.shift())
+  }
+  while (der.length){
+    unidos.push(der.shift())
+  }
+  return unidos
+*/
 }
 
 
