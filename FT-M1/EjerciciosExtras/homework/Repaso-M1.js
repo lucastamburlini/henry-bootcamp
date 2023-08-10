@@ -17,6 +17,15 @@ const {
 var countArray = function (array) {
     // Tu código aca:
 
+    let suma = 0;
+    for (let elemento of array) {
+        if (Array.isArray(elemento)) {
+            suma += countArray(elemento)
+        } else {
+            suma += elemento
+        }
+    }
+    return suma
 }
 
 
@@ -42,7 +51,7 @@ var countProps = function (obj) {
     let total = Object.keys(obj).length
     console.log(Object.keys(obj));
     for (let prop in obj) {
-        if (typeof obj[prop] === "object" && !Array.isArray(objeto[prop])) {
+        if (typeof obj[prop] === "object" && !Array.isArray(obj[prop])) {
             total += countProps(obj[prop])
         }
     }
