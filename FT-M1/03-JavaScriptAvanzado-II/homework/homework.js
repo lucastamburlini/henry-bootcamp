@@ -109,6 +109,9 @@ let textoUnderscore = crearCadena.bind(this, "_", "_");
 
 // Funciona con null es porque no hace ninguna referencia directa
 
+function multiplica(a, b) {
+  return a * b
+}
 
 
 // No modifiquen nada debajo de esta linea
