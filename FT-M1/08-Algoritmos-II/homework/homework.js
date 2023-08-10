@@ -14,6 +14,8 @@ function quickSort(array) {
   // quickSort(izq)  quickSort(der)
   // return array
 
+
+  /*
   if (array.length < 1) return [];
   let arr = []
   let arrIzq = [];
@@ -34,7 +36,25 @@ function quickSort(array) {
   console.log(arrDer);
 
   return arr.concat(quickSort(arrIzq), pivot, quickSort(arrDer))
-  /*return [...quickSort(arrIzq), pivote, ...quickSort(arrDer)]*/
+  */
+
+  // return [...quickSort(arrIzq), pivote, ...quickSort(arrDer)]
+  if (array.length <= 1) return array
+  let pivote = array[Math.floor(Math.random() * array.length - 1)]
+  let izq = [];
+  let der = [];
+  let equal = [];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] < pivote) {
+      izq.push(array[i])
+    } else if (array[i] > pivote) {
+      der.push(array[i])
+    } else {
+      equal.push(array[i])
+    }
+  }
+  return quickSort(izq).concat(equal).concat(quickSort(der))
+
 }
 let result = quickSort([7, 2, 8, 5, 3, 9, 4])
 console.log(result);
@@ -105,7 +125,7 @@ function merge(izq, der) {
 }
 
 
-let array = [7, 2, 8, 5, 3, 9, 4];
+let array = [7, 2, 8, 5, 3, 9, 4, 14, 8, 9];
 console.log("Array original:", array);
 const newArray = mergeSort(array);
 console.log("Array ordenado:", newArray);
