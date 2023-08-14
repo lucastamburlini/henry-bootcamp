@@ -1,10 +1,13 @@
 // Crear un array vacío llamado 'toDoItems'
 // Tu codigo acá:
+let toDoItems = [];
 
 // En la página 'index.html' hay un elemento span cuyo texto es 'Aplicación creada por:'.
 // Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML
 // agregar tu nombre al final del texto actual. Ej: 'Aplicación creada por Franco'
 // Tu código acá:
+document.querySelector("#createdBy").innerHTML = "Aplicación creada por Lucas Tamburlini";
+
 
 // Crear una clase denominada 'ToDo' cuyo constructor debe recibir un único parámetro del tipo string
 // con el nombre 'description' que será justamente la descripción del ToDo.
@@ -15,6 +18,8 @@
 
 function ToDo(description) {
   // Tu código acá:
+  this.description = description;
+  this.completed = false;
 }
 
 // Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
