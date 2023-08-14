@@ -92,8 +92,6 @@ function buildToDos(toDos) {
     return buildToDo(ToDo, index); // Utiliza la función buildToDo para construir cada tarea y las almacena en un array.
   });
   return toDoArray; // Devuelve el array de elementos de tarea construidos.
-
-
 }
 
 
@@ -134,7 +132,7 @@ function displayToDos() {
 
 function addToDo() {
   // Tu código acá:
-  let newToDo = new ToDo(toDoInput)
+  let newToDo = new ToDo(toDoInput.value)
   toDoItems.push(newToDo)
   toDoInput = "";
   displayToDos()
