@@ -6,6 +6,9 @@ let toDoItems = [];
 // Usando querySelector seleccionar dicho span por su id ('createdBy') y luego usando innerHTML
 // agregar tu nombre al final del texto actual. Ej: 'Aplicación creada por Franco'
 // Tu código acá:
+
+
+// Modifica el contenido del elemento con ID "createdBy" para mostrar "Aplicación creada por Lucas Tamburlini"
 document.querySelector("#createdBy").innerHTML = "Aplicación creada por Lucas Tamburlini";
 
 
@@ -16,10 +19,10 @@ document.querySelector("#createdBy").innerHTML = "Aplicación creada por Lucas T
 // 2) 'complete'    : debe setearse en false
 // Ayuda: usar 'this' en el constructor
 
+// Define una función constructora llamada ToDo que crea objetos de tareas pendientes. Cada objeto tiene una propiedad "description" para la descripción de la tarea y una propiedad "complete" que está inicialmente establecida en falso.
 function ToDo(description) {
-  // Tu código acá:
-  this.description = description;
-  this.complete = false;
+  this.description = description; // Almacena la descripción de la tarea en la propiedad "description".
+  this.complete = false; // Inicializa la propiedad "complete" en falso para indicar que la tarea no está completada.
 }
 
 // Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
@@ -28,8 +31,9 @@ function ToDo(description) {
 
 // Tu código acá:
 
+// Agrega un método llamado "completeToDo" al prototipo de la función constructora ToDo. Este método cambia el estado de la propiedad "complete" a true, indicando que la tarea está completada.
 ToDo.prototype.completeToDo = function () {
-  this.complete = true;
+  this.complete = true; // Cambia el estado de la propiedad "complete" a true.
 }
 
 // Agregar dos parámetros a la función 'buildToDo':
@@ -51,19 +55,21 @@ ToDo.prototype.completeToDo = function () {
 
 function buildToDo(todo, index) {
   // Tu código acá:
+  // Construye y devuelve un elemento de tarea pendiente en la interfaz.
 
-  let toDoShell = document.createElement("div");
-  toDoShell.classList.add("toDoShell");
-  let toDoText = document.createElement("span");
-  toDoText.innerHTML = todo.description
-  toDoText.id = `todo.${index}`
+  let toDoShell = document.createElement("div"); // Crea un elemento <div> para contener la tarea.
+  toDoShell.classList.add("toDoShell"); // Agrega una clase CSS para dar estilo al contenedor.
+
+  let toDoText = document.createElement("span"); // Crea un elemento <span> para mostrar el texto de la tarea.
+  toDoText.innerHTML = todo.description; // Asigna la descripción de la tarea al contenido del elemento.
+  toDoText.id = `todo.${index}`; // Establece un ID único para el elemento de texto.
 
   if (todo.complete === true) {
-    toDoText.classList.add("completeText");
+    toDoText.classList.add("completeText"); // Si la tarea está completada, agrega una clase CSS para resaltarlo.
   }
 
-  toDoShell.appendChild(toDoText)
-  return toDoShell
+  toDoShell.appendChild(toDoText); // Agrega el elemento de texto al contenedor.
+  return toDoShell; // Devuelve el contenedor de la tarea construida.
 }
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
@@ -71,13 +77,14 @@ function buildToDo(todo, index) {
 // Utilizar el método map usando la función previamente creada ('buildToDo')
 // Devolver el nuevo array
 
+
 function buildToDos(toDos) {
-  // Tu código acá:
   let toDoArray = toDos.map((todo, index) => {
-    return buildToDo(todo, index)
-  })
-  return toDoArray
+    return buildToDo(todo, index); // Utiliza la función buildToDo para construir cada tarea y las almacena en un array.
+  });
+  return toDoArray; // Devuelve el array de elementos de tarea construidos.
 }
+
 
 // La función 'displayToDos' se va a encargar de que se vean los toDo's en pantalla
 //  1) Seleccionr el elemento cuyo id es 'toDoContainer' y almacenarlo en una variable denominada 'toDoContainer'
@@ -90,6 +97,14 @@ function buildToDos(toDos) {
 
 function displayToDos() {
   // Tu código acá:
+  let toDoContainer = document.getElementById("toDoContainer")
+  toDoContainer.innerHTML = "";
+
+  let toDos = buildToDos(toDoItems);
+  toDos.forEach((toDo) => {
+    toDoContainer.appendChild(toDo)
+  })
+
 }
 
 // La función 'addToDo' agregará un nuevo ToDo al array 'toDoItems'
@@ -145,6 +160,8 @@ function completeToDo(event) {
 // ********************************************** ----------- ********************************************** //
 
 // Acá debes insertar la llamada a 'displayToDos'
+
+displayToDos();
 
 // ---------------------------- NO CAMBIES NADA DE ACÁ PARA ABAJO ----------------------------- //
 if (typeof module !== "undefined") {
