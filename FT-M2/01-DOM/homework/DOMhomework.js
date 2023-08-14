@@ -68,6 +68,9 @@ function buildToDo(todo, index) {
     toDoText.classList.add("completeText"); // Si la tarea está completada, agrega una clase CSS para resaltarlo.
   }
 
+  toDoText.addEventListener("click", completeToDo); // Agrega un evento de clic a toDoText y llama a completeToDo al hacer clic.
+
+
   toDoShell.appendChild(toDoText); // Agrega el elemento de texto al contenedor.
   return toDoShell; // Devuelve el contenedor de la tarea construida.
 }
@@ -83,6 +86,8 @@ function buildToDos(toDos) {
     return buildToDo(todo, index); // Utiliza la función buildToDo para construir cada tarea y las almacena en un array.
   });
   return toDoArray; // Devuelve el array de elementos de tarea construidos.
+
+
 }
 
 
@@ -135,7 +140,7 @@ function addToDo() {
 //   2) Agregarle un 'click' event listener, pasándole la función 'addToDo' como callback
 
 // Tu código acá:
-document.getElementById("addButton").addEventListener("click", addToDo())
+document.getElementById("addButton").addEventListener("click", addToDo)
 
 
 // La función completeToDo se va a ejecutar cuando queramos completar un todo
@@ -152,8 +157,10 @@ document.getElementById("addButton").addEventListener("click", addToDo())
 
 function completeToDo(event) {
   // DESCOMENTAR LA SIGUIENTE LINEA
-  //const index = event.target.id;
+  const index = event.target.id;
   // Tu código acá:
+  toDoItems[index].completeToDo();
+  displayToDos();
 }
 
 // Una vez que llegaste a este punto verificá que todos los tests pasen
