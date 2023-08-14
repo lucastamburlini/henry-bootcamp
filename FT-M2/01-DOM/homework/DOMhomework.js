@@ -53,7 +53,7 @@ ToDo.prototype.completeToDo = function () {
 //    7) Agregar 'toDoText' como hijo de 'toDoShell'
 //    8) Devolver la variable toDoShell
 
-function buildToDo(todo, index) {
+function buildToDo(ToDo, index) {
   // Tu código acá:
   // Construye y devuelve un elemento de tarea pendiente en la interfaz.
 
@@ -61,19 +61,25 @@ function buildToDo(todo, index) {
   toDoShell.classList.add("toDoShell"); // Agrega una clase CSS para dar estilo al contenedor.
 
   let toDoText = document.createElement("span"); // Crea un elemento <span> para mostrar el texto de la tarea.
-  toDoText.innerHTML = todo.description; // Asigna la descripción de la tarea al contenido del elemento.
-  toDoText.id = `todo.${index}`; // Establece un ID único para el elemento de texto.
+  toDoText.innerHTML = ToDo.description; // Asigna la descripción de la tarea al contenido del elemento.
 
-  if (todo.complete === true) {
-    toDoText.classList.add("completeText"); // Si la tarea está completada, agrega una clase CSS para resaltarlo.
+
+  let checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = `ToDo.${index}`;
+  checkbox.addEventListener("click", completeToDo);
+  checkbox.classList.add("completeCheckbox");
+
+  if (ToDo.complete === true) {
+    checkbox.checked = true;
   }
 
-  toDoText.addEventListener("click", completeToDo); // Agrega un evento de clic a toDoText y llama a completeToDo al hacer clic.
-
-
-  toDoShell.appendChild(toDoText); // Agrega el elemento de texto al contenedor.
-  return toDoShell; // Devuelve el contenedor de la tarea construida.
+  toDoShell.appendChild(checkbox);
+  toDoShell.appendChild(toDoText);
+  return toDoShell;
 }
+
+
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
 // Recibirá como parámetro un array de objetos ToDo
@@ -82,8 +88,8 @@ function buildToDo(todo, index) {
 
 
 function buildToDos(toDos) {
-  let toDoArray = toDos.map((todo, index) => {
-    return buildToDo(todo, index); // Utiliza la función buildToDo para construir cada tarea y las almacena en un array.
+  let toDoArray = toDos.map((ToDo, index) => {
+    return buildToDo(ToDo, index); // Utiliza la función buildToDo para construir cada tarea y las almacena en un array.
   });
   return toDoArray; // Devuelve el array de elementos de tarea construidos.
 
