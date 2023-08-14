@@ -97,14 +97,19 @@ function buildToDos(toDos) {
 
 function displayToDos() {
   // Tu código acá:
-  let toDoContainer = document.getElementById("toDoContainer")
+  // Obtener el elemento contenedor donde se mostrarán los elementos por hacer
+  let toDoContainer = document.getElementById("toDoContainer");
+
+  // Borrar el contenido existente dentro del contenedor
   toDoContainer.innerHTML = "";
 
+  // Construir un array de elementos por hacer usando la función buildToDos y el array toDoItems
   let toDos = buildToDos(toDoItems);
-  toDos.forEach((toDo) => {
-    toDoContainer.appendChild(toDo)
-  })
 
+  // Agregar cada elemento por hacer individual al contenedor
+  toDos.forEach((toDo) => {
+    toDoContainer.appendChild(toDo);
+  });
 }
 
 // La función 'addToDo' agregará un nuevo ToDo al array 'toDoItems'
@@ -118,6 +123,10 @@ function displayToDos() {
 
 function addToDo() {
   // Tu código acá:
+  let newToDo = new ToDo(toDoInput)
+  toDoItems.push(newToDo)
+  toDoInput = "";
+  displayToDos()
 }
 
 // Agregar un 'Event Listener' para que cada vez que el botón 'AGREGAR' sea clickeado
@@ -126,6 +135,8 @@ function addToDo() {
 //   2) Agregarle un 'click' event listener, pasándole la función 'addToDo' como callback
 
 // Tu código acá:
+document.getElementById("addButton").addEventListener("click", addToDo())
+
 
 // La función completeToDo se va a ejecutar cuando queramos completar un todo
 // [NOTA: Algunas cuestiones a tener en cuenta
