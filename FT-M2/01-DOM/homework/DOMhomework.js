@@ -19,7 +19,7 @@ document.querySelector("#createdBy").innerHTML = "Aplicación creada por Lucas T
 function ToDo(description) {
   // Tu código acá:
   this.description = description;
-  this.completed = false;
+  this.complete = false;
 }
 
 // Agregar un método denominado 'completeToDo' al prototipo de la clase ToDo
@@ -27,6 +27,10 @@ function ToDo(description) {
 // Debe setear el atributo 'complete' del ToDo en true
 
 // Tu código acá:
+
+ToDo.prototype.completeToDo = function () {
+  this.complete = true;
+}
 
 // Agregar dos parámetros a la función 'buildToDo':
 //    1) Un objeto de la clase ToDo
@@ -47,6 +51,19 @@ function ToDo(description) {
 
 function buildToDo(todo, index) {
   // Tu código acá:
+
+  let toDoShell = document.createElement("div");
+  toDoShell.classList.add("toDoShell");
+  let toDoText = document.createElement("span");
+  toDoText.innerHTML = todo.description
+  toDoText.id = `todo.${index}`
+
+  if (todo.complete === true) {
+    toDoText.classList.add("completeText");
+  }
+
+  toDoShell.appendChild(toDoText)
+  return toDoShell
 }
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
@@ -56,6 +73,10 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // Tu código acá:
+  let toDoArray = toDos.map((todo, index) => {
+    return buildToDo(todo, index)
+  })
+  return toDoArray
 }
 
 // La función 'displayToDos' se va a encargar de que se vean los toDo's en pantalla
