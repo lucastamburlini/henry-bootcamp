@@ -16,7 +16,7 @@ DOM (Document Object Model):
 El Modelo de Objetos del Documento (DOM) es una representación estructurada y jerárquica de un documento HTML, XML o XHTML. Define la estructura del documento como un conjunto de nodos y objetos que representan partes del contenido, como elementos HTML, atributos, texto y más. El DOM permite a los programas y scripts acceder, manipular y modificar dinámicamente el contenido y la presentación de una página web.
 
 DOM Element Selectors:
-Los selectores de elementos del DOM son métodos o expresiones que se utilizan para acceder y seleccionar elementos específicos en un documento HTML. Estos selectores permiten a los desarrolladores identificar y trabajar con elementos específicos del DOM, ya sea para aplicar estilos, modificar contenido o agregar interactividad. Ejemplos de selectores incluyen:
+Los selectores de elementos del DOM son métodos o expresiones que se utilizan para acceder y seleccionar elementos específicos en un documento HTML. 
 
 Selectores de etiqueta: Seleccionan elementos por el nombre de su etiqueta HTML, como div, p, h1, etc.
 Selectores de clase: Seleccionan elementos por su atributo class, como .clase.
@@ -24,6 +24,7 @@ Selectores de ID: Seleccionan elementos por su atributo id, como #identificador.
 Selectores de atributo: Seleccionan elementos por atributos específicos, como [atributo=valor].
 Selectores descendientes: Seleccionan elementos anidados dentro de otros elementos, como elemento-padre elemento-hijo.
 Selectores de pseudo-clase: Seleccionan elementos en estados específicos, como :hover, :active, etc.
+
 DOM Events:
 Los eventos del DOM son acciones que ocurren en un elemento del documento, como hacer clic en un botón, mover el cursor sobre un enlace o presionar una tecla. Estos eventos permiten que las páginas web sean interactivas y respondan a las acciones del usuario. Los eventos pueden ser capturados y manejados mediante JavaScript para ejecutar funciones específicas en respuesta a esas acciones. Ejemplos de eventos incluyen:
 
