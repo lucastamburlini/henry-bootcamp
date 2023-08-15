@@ -9,7 +9,7 @@ let toDoItems = [];
 
 
 // Modifica el contenido del elemento con ID "createdBy" para mostrar "Aplicación creada por Lucas Tamburlini"
-document.querySelector("#createdBy").innerHTML = "Aplicación creada por Lucas Tamburlini";
+document.querySelector("#createdBy").innerHTML += " " + "Lucas Tamburlini";
 
 
 // Crear una clase denominada 'ToDo' cuyo constructor debe recibir un único parámetro del tipo string
