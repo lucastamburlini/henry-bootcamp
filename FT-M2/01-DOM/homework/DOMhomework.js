@@ -53,32 +53,31 @@ ToDo.prototype.completeToDo = function () {
 //    7) Agregar 'toDoText' como hijo de 'toDoShell'
 //    8) Devolver la variable toDoShell
 
-function buildToDo(ToDo, index) {
+function buildToDo(todo, index) {
   // Tu código acá:
-  // Construye y devuelve un elemento de tarea pendiente en la interfaz.
 
-  let toDoShell = document.createElement("div"); // Crea un elemento <div> para contener la tarea.
-  toDoShell.classList.add("toDoShell"); // Agrega una clase CSS para dar estilo al contenedor.
+  let toDoShell = document.createElement("div");
+  toDoShell.setAttribute("class", "toDoShell");
 
-  let toDoText = document.createElement("span"); // Crea un elemento <span> para mostrar el texto de la tarea.
-  toDoText.innerHTML = ToDo.description; // Asigna la descripción de la tarea al contenido del elemento.
+  let toDoText = document.createElement("span");
+  toDoText.innerHTML = todo.description;
 
 
   let checkbox = document.createElement("input");
   checkbox.type = "checkbox";
-  checkbox.id = `ToDo.${index}`;
+  checkbox.setAttribute("id", index);
   checkbox.addEventListener("click", completeToDo);
-  checkbox.classList.add("completeCheckbox");
+  checkbox.setAttribute("class", "completeCheckbox");
 
-  if (ToDo.complete === true) {
+  if (todo.complete) {
     checkbox.checked = true;
   }
 
   toDoShell.appendChild(checkbox);
   toDoShell.appendChild(toDoText);
+
   return toDoShell;
 }
-
 
 
 // La función 'buildToDos' debe crear un array de objetos toDo y devolverlo
@@ -116,8 +115,8 @@ function displayToDos() {
   let toDos = buildToDos(toDoItems);
 
   // Agregar cada elemento por hacer individual al contenedor
-  toDos.forEach((toDo) => {
-    toDoContainer.appendChild(toDo);
+  toDos.map(elemento => {
+    toDoContainer.appendChild(elemento);
   });
 }
 
@@ -132,9 +131,11 @@ function displayToDos() {
 
 function addToDo() {
   // Tu código acá:
-  let newToDo = new ToDo(toDoInput.value)
-  toDoItems.push(newToDo)
-  toDoInput = "";
+  let description = document.getElementById("toDoInput").value
+  let tarea = new ToDo(description)
+  toDoItems.push(tarea)
+  let inpt = document.getElementById("toDoInput")
+  inpt.value = "";
   displayToDos()
 }
 
