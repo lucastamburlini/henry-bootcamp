@@ -71,6 +71,7 @@ function buildToDo(todo, index) {
 
   if (todo.complete) {
     checkbox.checked = true;
+    toDoText.setAttribute("class", "completeText");
   }
 
   toDoShell.appendChild(checkbox);
