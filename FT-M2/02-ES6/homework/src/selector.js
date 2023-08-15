@@ -16,6 +16,14 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
 
 var selectorTypeMatcher = function (selector) {
   // tu código aquí
+
+  let str = selector.toString();
+
+  if (str.includes('#')) return 'id'
+  if (str[0] === '.') return 'class'
+  else if (str.includes('.')) return 'tag.class'
+  else return 'tag'
+
 };
 
 // NOTA SOBRE LA FUNCIÓN MATCH
@@ -25,12 +33,28 @@ var selectorTypeMatcher = function (selector) {
 
 var matchFunctionMaker = function (selector) {
   var selectorType = selectorTypeMatcher(selector);
-  var matchFunction;
+  let matchFunction = () => { }
   if (selectorType === "id") {
+    matchFunction = (element) => `#${element.id}` === selector;
   } else if (selectorType === "class") {
+    matchFunction = (element) => {
+      for (let clase of element.classList) {
+        if (`.${clase}` === selector) {
+          return true
+        }
+      }
+      return false
+    }
   } else if (selectorType === "tag.class") {
+    matchFunction = (element) => {
+      const [tagName, className] = selector.split(".")
+      return matchFunctionMaker(tagName)(element) &&
+        matchFunctionMaker(`${className}`)(element)
+    }
   } else if (selectorType === "tag") {
+    matchFunction = (element) => element.tagName.toLowerCase() === selector.toLowerCase();
   }
+
   return matchFunction;
 };
 
