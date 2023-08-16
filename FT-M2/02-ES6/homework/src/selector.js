@@ -8,7 +8,6 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
   // recorre el árbol del DOM y recolecta elementos que matchien en resultSet
   // usa matchFunc para identificar elementos que matchien
 
-  // TU CÓDIGO AQUÍ
 };
 
 // Detecta y devuelve el tipo de selector
@@ -17,12 +16,12 @@ var traverseDomAndCollectElements = function (matchFunc, startEl) {
 var selectorTypeMatcher = function (selector) {
   // tu código aquí
 
-  let str = selector.toString();
+  if (selector[0] === '#') return 'id';
+  if (selector[0] === '.') return 'class';
+  if (selector.includes('.')) return 'tag.class';
 
-  if (str.includes('#')) return 'id'
-  if (str[0] === '.') return 'class'
-  else if (str.includes('.')) return 'tag.class'
-  else return 'tag'
+  return 'tag';
+
 
 };
 
@@ -31,28 +30,29 @@ var selectorTypeMatcher = function (selector) {
 // parametro y devuelve true/false dependiendo si el elemento
 // matchea el selector.
 
-var matchFunctionMaker = function (selector) {
-  var selectorType = selectorTypeMatcher(selector);
-  let matchFunction = () => { }
-  if (selectorType === "id") {
-    matchFunction = (element) => `#${element.id}` === selector;
-  } else if (selectorType === "class") {
-    matchFunction = (element) => {
-      for (let clase of element.classList) {
-        if (`.${clase}` === selector) {
-          return true
+let matchFunctionMaker = function (selector) {
+  let selectorType = selectorTypeMatcher(selector);
+  let matchFunction;
+
+  matchFunction = function (element) {
+    if (selectorType === "id") {
+      return `#${element.id}` === selector;
+    } else if (selectorType === "class") {
+      for (let i = 0; i < element.classList.length; i++) {
+        if (`.${element.classList[i]}` === selector) {
+          return true;
         }
       }
-      return false
+    } else if (selectorType === 'tag.class') {
+      let [tag, className] = selector.split('.')
+      return (
+        matchFunctionMaker(tag)(element) &&
+        matchFunctionMaker(`.${className}`)(element)
+      );
+    } else if (selectorType === 'tag') {
+      return element.tagName && element.tagName.toLowerCase() === selector.toLowerCase();
     }
-  } else if (selectorType === "tag.class") {
-    matchFunction = (element) => {
-      const [tagName, className] = selector.split(".")
-      return matchFunctionMaker(tagName)(element) &&
-        matchFunctionMaker(`${className}`)(element)
-    }
-  } else if (selectorType === "tag") {
-    matchFunction = (element) => element.tagName.toLowerCase() === selector.toLowerCase();
+    return false
   }
 
   return matchFunction;
