@@ -22,4 +22,14 @@ $("#search").on("click", () => {
 
 });
 
-$
+$("#delete").on("click", () => {
+
+    $.ajax({
+        type: "DELETE",
+        url: `http://localhost:5000/amigos/${$("#inputDelete").val()}`,
+        success: (data) => {
+            console.log(data);
+            $("#success").text("Tu amigo fue borrado con éxito.")
+        }
+    })
+})
