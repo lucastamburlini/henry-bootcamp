@@ -1,13 +1,25 @@
-var traverseDomAndCollectElements = function (matchFunc, startEl) {
+var traverseDomAndCollectElements = function (matchFunc, startEl = document.body) {
   var resultSet = [];
 
-  if (typeof startEl === "undefined") {
+  /* if (typeof startEl === "undefined") {
     startEl = document.body;
-  }
+  } */
 
   // recorre el árbol del DOM y recolecta elementos que matchien en resultSet
   // usa matchFunc para identificar elementos que matchien
 
+  let element = startEl.children
+
+  if (matchFunc(startEl)) {
+    resultSet.push(startEl)
+  }
+
+  for (let i = 0; i < element.length; i++) {
+    let result = traverseDomAndCollectElements(matchFunc, element[i]);
+    resultSet = [...resultSet, ...result]
+  }
+
+  return resultSet
 };
 
 // Detecta y devuelve el tipo de selector
@@ -32,7 +44,7 @@ var selectorTypeMatcher = function (selector) {
 
 let matchFunctionMaker = function (selector) {
   let selectorType = selectorTypeMatcher(selector);
-  let matchFunction;
+
 
   matchFunction = function (element) {
     if (selectorType === "id") {
