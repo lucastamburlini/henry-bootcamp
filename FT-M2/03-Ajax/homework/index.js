@@ -1,35 +1,41 @@
 
-$("#boton").on("click", () => {
-    $.get("http://localhost:5000/amigos", (data) => {
-        console.log(data)
-        data.map(amigo => {
+let botonHandler = function () {
+    let lista = $("#lista");
+    lista.empty();
+    $.get("http://localhost:5000/amigos", (response) => {
+        console.log(response)
+        response.map(amigo => {
             let listAmigo = document.createElement("li")
-            listAmigo.textContent = `${amigo.name}`
+            listAmigo.textContent = `${amigo.name} es tu amigo ${amigo.id}`
             $("#lista").append(listAmigo)
         })
     })
-})
+};
 
-$("#search").on("click", () => {
-
+let searchHandler = function () {
     let amigoId = $("#input").val();
-    console.log(amigoId);
-    let url = `http://localhost:5000/amigos/${amigoId}`
+    if (amigoId) {
+        $.get(`http://localhost:5000/amigos/${amigoId}`, (response) => {
+            $("#amigo").html(`${response.name}`)
+        });
+    } else {
+        $("#amigo").html("Ingresa un ID")
+    }
+}
 
-    $.get(url, (amigo) => {
-        $("#amigo").text(amigo.name)
-    })
 
-});
-
-$("#delete").on("click", () => {
-
+let deleteHandler = function () {
     $.ajax({
         type: "DELETE",
         url: `http://localhost:5000/amigos/${$("#inputDelete").val()}`,
-        success: (data) => {
-            console.log(data);
+        success: (response) => {
+            console.log(response);
             $("#success").text("Tu amigo fue borrado con éxito.")
+            botonHandler()
         }
     })
-})
+}
+
+$("#boton").on("click", botonHandler)
+$("#search").on("click", searchHandler);
+$("#delete").on("click", deleteHandler)
