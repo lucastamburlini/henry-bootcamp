@@ -1,10 +1,30 @@
-import React from "react";
+import { Component } from "react";
 
-export default Botones = () => {
-  return (
-    <div>
-      <button onClick={() => alert("Hola!")}>Módulo 1</button>
-      <button onClick={() => alert("Hola 2!")}>Módulo 2</button>
-    </div>
-  );
-};
+class Botones extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <button onClick={() => alert(this.props.alerts.m1)}>Módulo 1</button>
+        <button onClick={() => alert(this.props.alerts.m2)}>Módulo 2</button>
+      </div>
+    );
+  }
+}
+
+export default Botones;
+
+/* render() {
+
+    const { alerts: { m1, m2 } } = this.props;
+
+    return (
+      <div>
+        <button onClick={() => alert(m1)}>Módulo 1</button>
+        <button onClick={() => alert(m2)}>Módulo 2</button>
+      </div>
+    );
+  } */

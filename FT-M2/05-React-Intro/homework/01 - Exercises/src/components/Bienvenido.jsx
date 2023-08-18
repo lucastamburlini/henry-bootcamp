@@ -13,11 +13,11 @@ export default function Bienvenido() {
       <h1>Soy Henry!</h1>
       <h3>{studentName}</h3>
       <ul>
-        {techSkills.map((tech) => (
-          <li>{tech}</li>
+        {techSkills.map((tech, index) => (
+          <li key={index}>{tech}</li>
         ))}
       </ul>
-      <Botones />
+      <Botones alerts={alerts} />
     </div>
   );
 }
