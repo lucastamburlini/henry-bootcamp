@@ -1,7 +1,9 @@
-const EventEmitter = require("./event-emitter")
+// const EventEmitter = require("./event-emitter") = CommonJS
+
+import { EventEmitter } from "./event-emitter";
 
 
-const whiteboard = new EventEmitter();
+export const whiteboard = new EventEmitter();
 // Ultimately, the color of our stroke;
 let color;
 
@@ -108,4 +110,4 @@ whiteboard.draw = function (start, end, strokeColor, shouldBroadcast) {
   }
 };
 
-module.exports = whiteboard
+// module.exports = whiteboard = CommonJs
