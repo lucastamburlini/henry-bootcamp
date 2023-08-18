@@ -1,6 +1,6 @@
 // const EventEmitter = require("./event-emitter") = CommonJS
 
-import { EventEmitter } from "./event-emitter";
+import EventEmitter from "./event-emitter";
 
 
 export const whiteboard = new EventEmitter();

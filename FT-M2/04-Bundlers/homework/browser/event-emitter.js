@@ -1,7 +1,7 @@
 
 
 // our EventEmitter constructor function
-function EventEmitter() {
+export default function EventEmitter() {
   this.subscribers = {};
 }
 
@@ -38,4 +38,4 @@ EventEmitter.prototype.emit = function (eventName) {
 };
 
 
-module.exports = EventEmitter;
+// module.exports = EventEmitter; = CommonJs
