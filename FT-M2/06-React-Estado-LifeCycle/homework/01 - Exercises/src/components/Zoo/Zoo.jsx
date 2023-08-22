@@ -35,12 +35,32 @@ export default function Zoo() {
       .catch((error) => console.log(error));
   }, []);
 
+  const handleSpecies = (evento) => {
+    const specie = evento.target.value;
+    setZoo({
+      ...zoo,
+      animals: zoo.allAnimals.filter((animal) => animal.specie === specie),
+    });
+  };
+
+  const handleAllSpecies = () => {
+    setZoo({
+      ...zoo,
+      animals: zoo.allAnimals,
+    });
+  };
 
   return (
     <div>
       <label>Zoo Name:</label>
       <input value={zoo.zooName} onChange={handleInputChange} />
       <h1>{zoo.zooName}</h1>
+      <Species
+        species={zoo.species}
+        handleSpecies={handleSpecies}
+        handleAllSpecies={handleAllSpecies}
+      />
+      <Animals animals={zoo.animals} />
     </div>
   );
 }
