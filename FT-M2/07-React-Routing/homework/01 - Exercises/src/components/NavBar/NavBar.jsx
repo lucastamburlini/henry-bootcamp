@@ -8,24 +8,30 @@ export default function NavBar() {
   return (
     <div className={styleNav.container}>
       <ul className={styleNav.menu}>
-        <NavLink
-          to="/"
-          className={({ isActive }) => {
-            return isActive ? "active" : "disable";
-          }}
-        >
-          <img src={logoHenry} alt="logo-henry" />
-        </NavLink>
-        <NavLink>
+        <li>
+          <NavLink to="/">
+            <img src={logoHenry} alt="logo-henry" />
+          </NavLink>
+        </li>
+        <li>
           <h1>Central de Cruceros</h1>
-        </NavLink>
+        </li>
         <div className={styleNav.options}>
-          <NavLink to="/shipping">
-            <span>Navieras</span>
-          </NavLink>
-          <NavLink to="/discounts">
-            <span>Promociones</span>
-          </NavLink>
+          <li>
+            <NavLink
+              to="/shipping"
+              className={({ isActive }) => {
+                return isActive ? styleNav.active : styleNav.disable;
+              }}
+            >
+              <span>Navieras</span>
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/discounts">
+              <span>Promociones</span>
+            </NavLink>
+          </li>
         </div>
       </ul>
     </div>
