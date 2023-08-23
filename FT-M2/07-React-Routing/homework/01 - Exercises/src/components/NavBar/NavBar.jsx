@@ -1,24 +1,31 @@
 import React from "react";
 import logoHenry from "../../assets/logo-henry.png";
+import { NavLink } from "react-router-dom";
+
 import styleNav from "./NavBar.module.css";
 
 export default function NavBar() {
   return (
     <div className={styleNav.container}>
       <ul className={styleNav.menu}>
-        <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) => {
+            return isActive ? "active" : "disable";
+          }}
+        >
           <img src={logoHenry} alt="logo-henry" />
-        </li>
-        <li>
+        </NavLink>
+        <NavLink>
           <h1>Central de Cruceros</h1>
-        </li>
+        </NavLink>
         <div className={styleNav.options}>
-          <li>
+          <NavLink to="/shipping">
             <span>Navieras</span>
-          </li>
-          <li>
+          </NavLink>
+          <NavLink to="/discounts">
             <span>Promociones</span>
-          </li>
+          </NavLink>
         </div>
       </ul>
     </div>
