@@ -25,7 +25,7 @@ export const getStoreName = () => {
         /*Aquí es donde agregas tu código*/
         return dispatch({
             type: GET_STORE_NAME,
-            payload: response
+            payload: response.data.name
         });
     };
 }
