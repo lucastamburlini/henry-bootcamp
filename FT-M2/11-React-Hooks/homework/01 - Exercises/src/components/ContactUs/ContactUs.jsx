@@ -1,6 +1,15 @@
 import React from "react";
 
 const ContactUs = () => {
+  const [form, setForm] = React.useState({
+    nombre: "",
+    email: "",
+    asunto: "",
+    mensaje: "",
+  });
+  
+  const handleInput 
+
   return (
     <div>
       <form className="contactBg">
