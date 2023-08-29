@@ -8,7 +8,9 @@ const ContactUs = () => {
     mensaje: "",
   });
   
-  const handleInput 
+  const handleInput = () => {
+    
+  }
 
   return (
     <div>
