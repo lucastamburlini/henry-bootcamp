@@ -7,10 +7,11 @@ const ContactUs = () => {
     asunto: "",
     mensaje: "",
   });
-  
-  const handleInput = () => {
-    
-  }
+
+  const handleInput = (e) => {
+    setForm((e.target.name = e.target.value));
+  };
+  console.log(handleInput);
 
   return (
     <div>
