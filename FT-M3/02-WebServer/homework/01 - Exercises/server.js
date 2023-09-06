@@ -2,7 +2,11 @@ var fs = require("fs");
 var http = require("http");
 /* ⚠️ NO MODIFICAR NADA POR ENCIMA DE ESTA LÍNEA ⚠️ */
 /* AQUÍ DEBAJO PUEDES ESCRIBIR LA CONSTANTE DEL PUERTO */
-const PORT = null;
+const PORT = 3001;
+
+http.createServer((req, res) => {
+  console.log(`Server raised in port ${PORT}`);
+}).listen(3001, 'localhost')
 
 /* ⚠️ LA LÍNEA SIGUIENTE TIENE QUE QUEDAR COMO ESTÁ PARA PODER EXPORTAR EL SERVIDOR ⚠️ */
 module.exports =
