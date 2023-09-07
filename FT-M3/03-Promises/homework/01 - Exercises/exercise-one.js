@@ -19,16 +19,31 @@ args.forEach(function (arg) {
 });
 
 function problemA() {
-  // callback version
+ /*  // callback version
   exerciseUtils.readFile("poem-one/stanza-02.txt", function (err, stanza2) {
     exerciseUtils.blue(stanza2);
     exerciseUtils.readFile("poem-one/stanza-03.txt", function (err, stanza3) {
       exerciseUtils.blue(stanza3);
     });
-  });
+  }); */
 
   // promise version
   // Tu código acá:
+  exerciseUtils.promisifiedReadFile("stanza-02.txt")
+    .then((respuesta) => {
+      exerciseUtils.blue(respuesta)
+      return exerciseUtils.promisifiedReadFile("stanza-03.txt");
+    }
+    )
+    .then((respuesta) => {
+      exerciseUtils.blue(respuesta);
+      console.log("done");
+    })
+    .catch(error => {
+      console.log("Error: ", error)
+    })
+
+
 }
 
 function problemB() {
