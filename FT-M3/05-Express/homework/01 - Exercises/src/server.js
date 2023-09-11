@@ -8,6 +8,10 @@ server.use(express.json());
 
 let id = 1;
 
+server.get("/posts", (req, res) => {
+    res.status(200).json(publications);
+});
+
 server.post("/posts", (req, res) => {
     const { author, title, contents } = req.body
     if (author && title && contents) {
