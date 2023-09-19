@@ -2,7 +2,7 @@
 
 const ejercicio02 = 'SELECT * FROM movies WHERE duration<90;';
 
-const ejercicio03 = '';
+const ejercicio03 = 'SELECT * FROM movies WHERE year BETWEEN 1930 AND 1940;';
 
 const ejercicio04 = '';
 
