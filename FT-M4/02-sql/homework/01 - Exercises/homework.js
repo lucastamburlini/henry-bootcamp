@@ -1,6 +1,6 @@
 /* ¡Escribe tus comandos en este archivo! */
 
-const ejercicio02 = '';
+const ejercicio02 = 'SELECT * FROM movies WHERE duration<90;';
 
 const ejercicio03 = '';
 
