@@ -1,1 +1,3 @@
-SELECT * FROM movies WHERE title LIKE '%til%';
+SELECT *
+FROM movies
+WHERE cardinality(actors) = 1;
