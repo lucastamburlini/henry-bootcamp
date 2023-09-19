@@ -10,7 +10,7 @@ const ejercicio05 = 'SELECT * FROM movies WHERE cardinality(actors) = 1;';
 
 const ejercicio06 = 'SELECT title, AVG(rating) FROM movies, unnest(ratings) rating GROUP BY title;';
 
-const ejercicio07 = '';
+const ejercicio07 = "SELECT actors FROM movies WHERE (title LIKE '%Fast and%' AND year=2016);";
 
 module.exports = {
    ejercicio02,

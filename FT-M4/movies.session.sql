@@ -1,1 +1,1 @@
-SELECT title, AVG(rating) FROM movies, unnest(ratings) rating GROUP BY title; 
+SELECT actors FROM movies WHERE (title LIKE '%Fast and%' AND year=2016); 
