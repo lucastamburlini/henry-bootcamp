@@ -1,3 +1,1 @@
-SELECT *
-FROM movies
-WHERE cardinality(actors) = 1;
+SELECT title, AVG(rating) FROM movies, unnest(ratings) rating GROUP BY title; 

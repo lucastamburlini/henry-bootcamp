@@ -8,7 +8,7 @@ const ejercicio04 = 'SELECT * FROM movies WHERE title LIKE ' % til % ';';
 
 const ejercicio05 = 'SELECT * FROM movies WHERE cardinality(actors) = 1;';
 
-const ejercicio06 = '';
+const ejercicio06 = 'SELECT title, AVG(rating) FROM movies, unnest(ratings) rating GROUP BY title;';
 
 const ejercicio07 = '';
 
