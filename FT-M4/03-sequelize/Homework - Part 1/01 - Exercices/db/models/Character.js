@@ -14,6 +14,7 @@ module.exports = (sequelize) => {
       name: {
          type: DataTypes.STRING,
          unique: true,
+         allowNull: false,
          validate: {
             notIn: [["Henry", "SoyHenry", "Soy Henry"]]
          }
