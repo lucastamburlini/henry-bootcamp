@@ -5,7 +5,7 @@ const PostModel = require("./models/postsModel");
 // const sequelize = new Sequelize('postgres://user:pass@example.com:5432/dbname') // Example for postgres
 
 const sequelize = new Sequelize(
-  "postgres://postgres:pass@example.com:5432/henrydatabase",
+  "postgres://user:pass@example.com:5432/dbname",
   {logging: false}
 );
 
