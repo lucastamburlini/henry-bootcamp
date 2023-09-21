@@ -2,10 +2,10 @@ const { Sequelize, Op } = require('sequelize');
 const modelCharacter = require('./models/Character.js');
 const modelAbility = require('./models/Ability.js');
 const modelRole = require('./models/Role.js');
-const { DB_PASSWORD } = process.env;
+const { DB_PASSWORD, DB_USER, DB_HOST } = process.env;
 
 const db = new Sequelize(
-   `postgres://user:${DB_PASSWORD}@localhost:5432/henrydatabase`,
+   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:5432/henrydatabase`,
    {
       logging: false,
    }

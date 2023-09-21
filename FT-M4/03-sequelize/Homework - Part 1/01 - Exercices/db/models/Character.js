@@ -5,24 +5,32 @@ module.exports = (sequelize) => {
       code: {
          type: DataTypes.STRING(5),
          primaryKey: true,
+         validate: {
+            isNotHenry(value) {
+               if (value.toLowerCase() === "henry") throw new Error("is Henry");
+            }
+         }
       },
       name: {
          type: DataTypes.STRING,
-         unique: true
+         unique: true,
+         validate: {
+            notIn: [["Henry", "SoyHenry", "Soy Henry"]]
+         }
       },
       age: {
-         type: DataType.INTEGER,
+         type: DataTypes.INTEGER,
       },
       race: {
-         type: DataType.ENUM('Human', 'Elf', 'Machine', 'Demon', 'Animal', 'Other'),
+         type: DataTypes.ENUM('Human', 'Elf', 'Machine', 'Demon', 'Animal', 'Other'),
          defaultValue: "Other"
       },
       hp: {
-         type: DataType.FLOAT,
+         type: DataTypes.FLOAT,
          allowNull: false
       },
       mana: {
-         type: DataType.FLOAT,
+         type: DataTypes.FLOAT,
          allowNull: false
       },
    },
